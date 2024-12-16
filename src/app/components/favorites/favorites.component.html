@@ -1,0 +1,25 @@
+<div class="favorites-container">
+  <h2 class="favorites-title">Cidades Favoritas</h2>
+
+  <div cdkDropList class="favorites-list" (cdkDropListDropped)="drop($event)">
+    <app-weather-card
+      *ngFor="let city of favorites$ | async"
+      cdkDrag
+      [cityName]="city.cityName"
+      [weatherDescription]="city.weatherDescription"
+      [icon]="city.icon"
+      [temperature]="city.temperature"
+      [minTemperature]="city.minTemperature"
+      [maxTemperature]="city.maxTemperature"
+      [humidity]="city.humidity"
+      [forecastData]="forecastData[city.cityId]"
+      [showHighlightButton]="true"
+      [isHighlighted]="city.cityId === highlightedCityId"
+      [isFavorite]="true"
+      (highlightCity)="highlightCity(city.cityId)"
+      (clearHighlight)="clearHighlight()"
+      (toggleFavorite)="removeCity(city.cityId)"
+      (toggleForecast)="showFiveDayForecast(city.cityId, city.cityName)"
+    ></app-weather-card>
+  </div>
+</div>

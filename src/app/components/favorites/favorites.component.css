@@ -1,0 +1,14 @@
+.favorites-container {
+  padding: 16px;
+}
+
+.favorites-title {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

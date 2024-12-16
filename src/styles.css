@@ -1,1 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  --background-color: #f8f4e3;
+  --icon-background-color: #a67c52;
+  --toolbar-color: #6b4f2a;
+  --toolbar-text-color: #4a3a2c; 
+  --card-background-color: #fffaf0;
+  --card-shadow: rgba(0, 0, 0, 0.15);
+  --card-hover-shadow: rgba(0, 0, 0, 0.25);
+  --button-primary: #ffba08;
+  --button-accent: #c99700;
+}
+
+.dark-theme {
+  --background-color: #3b2a1f;
+  --icon-background-color: #7a5a37;
+  --toolbar-color: #533821;
+  --toolbar-text-color: #fffaf0; 
+  --card-background-color: #4a3a2c;
+  --card-shadow: rgba(0, 0, 0, 0.4);
+  --card-hover-shadow: rgba(0, 0, 0, 0.5);
+  --button-primary: #ffba08;
+  --button-accent: #c99700;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  background-color: var(--background-color);
+  color: #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  background-color: var(--toolbar-color) !important;
+  color: var(--toolbar-text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+mat-card {
+  background-color: var(--card-background-color) !important;
+  color: inherit;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+mat-card.search-card {
+  background-color: var(--background-color) !important;
+}
+
+.content {
+  background-color: var(--background-color);
+  padding: 16px;
+  transition: background-color 0.3s ease;
+}
+
+mat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px var(--card-hover-shadow);
+}
+
+mat-nav-list {
+  background-color: var(--toolbar-color);
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--toolbar-color);
+}
+
+.card {
+  margin: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar mat-icon {
+  background-color: transparent !important;
+  border-radius: 50%;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+
+button[mat-icon-button], mat-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+h2, h3, p, mat-card-title {
+  color: var(--toolbar-text-color);
+}
+
+button[mat-raised-button][color="primary"] {
+  background-color: var(--button-primary) !important;
+  color: #fff;
+}
+
+button[mat-raised-button][color="warn"] {
+  background-color: var(--button-accent) !important;
+  color: #fff;
+}

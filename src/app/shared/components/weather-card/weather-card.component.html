@@ -1,0 +1,53 @@
+<mat-card 
+  class="weather-card" 
+  [ngClass]="{'highlighted': isHighlighted}">    
+  <mat-card-header>
+      <mat-card-title>{{ cityName }}</mat-card-title>
+      <img
+        [src]="'http://openweathermap.org/img/wn/' + icon + '@2x.png'"
+        alt="{{ weatherDescription }}"
+        class="weather-icon"
+      />
+    </mat-card-header>
+    <mat-card-content>
+      <p class="weather-description">{{ weatherDescription }}</p>
+      <p>Temperatura Atual: {{ temperature }}°C</p>
+      <p>Mín: {{ minTemperature }}°C | Máx: {{ maxTemperature }}°C</p>
+      <p>Umidade: {{ humidity }}%</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+          *ngIf="!isHighlighted && showHighlightButton"
+          mat-raised-button
+          color="primary"
+          (click)="onHighlightCity()"
+        >
+          Destacar
+        </button>
+        <button
+          *ngIf="isHighlighted && showHighlightButton"
+          mat-raised-button
+          color="accent"
+          (click)="onClearHighlight()"
+        >
+          Remover Destaque
+        </button>
+        <button mat-raised-button color="primary" (click)="onToggleForecast()">
+          {{ forecastData ? 'Esconder Previsão' : 'Mostrar Previsão' }}
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="toggleFavorite.emit()"
+        >
+          {{ isFavorite ? 'Remover Favoritos' : 'Adicionar aos Favoritos' }}
+        </button>
+    </mat-card-actions>      
+    <div class="forecast-section" *ngIf="forecastData">
+      <div class="forecast-day" *ngFor="let day of forecastData">
+        <p>{{ day.date }}</p>
+        <img [src]="'http://openweathermap.org/img/wn/' + day.weatherIcon + '@2x.png'" alt="Weather Icon" />
+        <p>Mín: {{ day.minTemperature }}°C Máx: {{ day.maxTemperature }}°C</p>
+      </div>
+    </div>
+</mat-card>  
